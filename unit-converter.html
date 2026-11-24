@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #1e3a5f;
+      color: white;
+      position: sticky;
+      top: 0;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .header-top h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 1px solid white;
+      color: white;
+      font-size: 22px;
+      padding: 4px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    nav {
+      background-color: #142842;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 8px;
+      gap: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      background-color: #1e3a5f;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background-color: #345d91;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 25px auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      flex-grow: 1;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .top-bar h2 {
+      margin: 0;
+      color: #1e3a5f;
+    }
+
+    .home-link {
+      text-decoration: none;
+      background-color: #1e3a5f;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .box {
+      background-color: #f9fbfd;
+      border: 1px solid #ccd6e0;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .box h3 {
+      margin-top: 0;
+      color: #1e3a5f;
+      font-size: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 92%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+
+    .btn {
+      background-color: #1e3a5f;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #345d91;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #1e3a5f;
+    }
+
+    footer {
+      background-color: #142842;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+      position: sticky;
+      bottom: 0;
+    }
+
+    @media (max-width: 650px) {
+      .burger {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <h1>CS 1130 - Introduction to Computing</h1>
+      <button class="burger" id="burgerBtn">&#9776;</button>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="unit-converter.html">Unit Converter</a>
+      <a href="income-tax-calculator.html">Income Tax Calculator</a>
+      <a href="natural-numbers-loops.html">Factorial, Sum and Average</a>
+      <a href="employee-payroll.html">Simple Payroll</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="top-bar">
+      <h2>Unit Converter</h2>
+      <a href="index.html" class="home-link">Return to Home</a>
+    </div>
+
+    <div class="grid">
+      <div class="box">
+        <h3>Fahrenheit to Celsius</h3>
+        <label for="fInput">Enter Fahrenheit:</label>
+        <input type="number" id="fInput">
+        <button class="btn" id="btnFtoC">Convert</button>
+        <p class="result" id="fResult">Result: </p>
+      </div>
+
+      <div class="box">
+        <h3>Celsius to Fahrenheit</h3>
+        <label for="cInput">Enter Celsius:</label>
+        <input type="number" id="cInput">
+        <button class="btn" id="btnCtoF">Convert</button>
+        <p class="result" id="cResult">Result: </p>
+      </div>
+
+      <div class="box">
+        <h3>Meters to Feet</h3>
+        <label for="mInput">Enter Meters:</label>
+        <input type="number" id="mInput">
+        <button class="btn" id="btnMtoFt">Convert</button>
+        <p class="result" id="mResult">Result: </p>
+      </div>
+
+      <div class="box">
+        <h3>Feet to Meters</h3>
+        <label for="ftInput">Enter Feet:</label>
+        <input type="number" id="ftInput">
+        <button class="btn" id="btnFtToM">Convert</button>
+        <p class="result" id="ftResult">Result: </p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    CS 1130 - Introduction to Computing
+  </footer>
+
+  <script>
+    function convertUnit(type) {
+      let val = 0;
+      let ans = 0;
+
+      switch (type) {
+        case "FtoC":
+          val = parseFloat(document.getElementById("fInput").value);
+          if (isNaN(val)) {
+            document.getElementById("fResult").innerHTML = "Result: ";
+            return;
+          }
+          ans = (val - 32) * 5 / 9;
+          document.getElementById("fResult").innerHTML = "Result: " + ans.toFixed(2) + " °C";
+          break;
+
+        case "CtoF":
+          val = parseFloat(document.getElementById("cInput").value);
+          if (isNaN(val)) {
+            document.getElementById("cResult").innerHTML = "Result: ";
+            return;
+          }
+          ans = (val * 9 / 5) + 32;
+          document.getElementById("cResult").innerHTML = "Result: " + ans.toFixed(2) + " °F";
+          break;
+
+        case "MtoFt":
+          val = parseFloat(document.getElementById("mInput").value);
+          if (isNaN(val)) {
+            document.getElementById("mResult").innerHTML = "Result: ";
+            return;
+          }
+          ans = val * 3.28084;
+          document.getElementById("mResult").innerHTML = "Result: " + ans.toFixed(2) + " ft";
+          break;
+
+        case "FtToM":
+          val = parseFloat(document.getElementById("ftInput").value);
+          if (isNaN(val)) {
+            document.getElementById("ftResult").innerHTML = "Result: ";
+            return;
+          }
+          ans = val / 3.28084;
+          document.getElementById("ftResult").innerHTML = "Result: " + ans.toFixed(2) + " m";
+          break;
+      }
+    }
+
+    function main() {
+      document.getElementById("burgerBtn").addEventListener("click", () => {
+        document.getElementById("navMenu").classList.toggle("show");
+      });
+
+      document.getElementById("btnFtoC").addEventListener("click", () => convertUnit("FtoC"));
+      document.getElementById("btnCtoF").addEventListener("click", () => convertUnit("CtoF"));
+      document.getElementById("btnMtoFt").addEventListener("click", () => convertUnit("MtoFt"));
+      document.getElementById("btnFtToM").addEventListener("click", () => convertUnit("FtToM"));
+
+      document.getElementById("fInput").addEventListener("input", () => convertUnit("FtoC"));
+      document.getElementById("cInput").addEventListener("input", () => convertUnit("CtoF"));
+      document.getElementById("mInput").addEventListener("input", () => convertUnit("MtoFt"));
+      document.getElementById("ftInput").addEventListener("input", () => convertUnit("FtToM"));
+    }
+
+    main();
+  </script>
+
+</body>
+</html>

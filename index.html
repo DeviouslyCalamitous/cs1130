@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS 1130 - Introduction to Computing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #1e3a5f;
+      color: white;
+      position: sticky;
+      top: 0;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .header-title h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .header-title p {
+      margin: 4px 0 0 0;
+      font-size: 14px;
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 1px solid white;
+      color: white;
+      font-size: 22px;
+      padding: 4px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    nav {
+      background-color: #142842;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 8px;
+      gap: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      background-color: #1e3a5f;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background-color: #345d91;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 850px;
+      margin: 25px auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      flex-grow: 1;
+    }
+
+    h2 {
+      color: #1e3a5f;
+      margin-top: 0;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      color: #222;
+      background-color: #f9fbfd;
+      border: 1px solid #ccd6e0;
+      border-left: 5px solid #1e3a5f;
+      padding: 18px;
+      border-radius: 5px;
+    }
+
+    .card:hover {
+      background-color: #eef3f8;
+    }
+
+    .card h3 {
+      margin: 0 0 8px 0;
+      color: #1e3a5f;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      background-color: #142842;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+      position: sticky;
+      bottom: 0;
+    }
+
+    @media (max-width: 650px) {
+      .burger {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="header-title">
+        <h1>CS 1130 - Introduction to Computing</h1>
+        <p>Class Instructor: John Roy A. Geralde</p>
+      </div>
+      <button class="burger" id="burgerBtn">&#9776;</button>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="unit-converter.html">Unit Converter</a>
+      <a href="income-tax-calculator.html">Income Tax Calculator</a>
+      <a href="natural-numbers-loops.html">Factorial, Sum and Average</a>
+      <a href="employee-payroll.html">Simple Payroll</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Select a Program</h2>
+    <div class="grid">
+      <a href="unit-converter.html" class="card">
+        <h3>Unit Converter</h3>
+        <p>Convert Celsius, Fahrenheit, Meters, and Feet.</p>
+      </a>
+
+      <a href="income-tax-calculator.html" class="card">
+        <h3>Income Tax Calculator</h3>
+        <p>Compute income tax based on net taxable income.</p>
+      </a>
+
+      <a href="natural-numbers-loops.html" class="card">
+        <h3>Factorial, Sum and Average</h3>
+        <p>Compute Nth factorial, sum, and average using loops.</p>
+      </a>
+
+      <a href="employee-payroll.html" class="card">
+        <h3>Simple Payroll</h3>
+        <p>Add and delete employee records in a payroll table.</p>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    CS 1130 - Introduction to Computing
+  </footer>
+
+  <script>
+    function main() {
+      let burgerBtn = document.getElementById("burgerBtn");
+      let navMenu = document.getElementById("navMenu");
+
+      burgerBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+      });
+    }
+
+    main();
+  </script>
+
+</body>
+</html>

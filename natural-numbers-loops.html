@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factorial, Sum and Average</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #1e3a5f;
+      color: white;
+      position: sticky;
+      top: 0;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .header-top h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 1px solid white;
+      color: white;
+      font-size: 22px;
+      padding: 4px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    nav {
+      background-color: #142842;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 8px;
+      gap: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      background-color: #1e3a5f;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background-color: #345d91;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 750px;
+      margin: 25px auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      flex-grow: 1;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .top-bar h2 {
+      margin: 0;
+      color: #1e3a5f;
+    }
+
+    .home-link {
+      text-decoration: none;
+      background-color: #1e3a5f;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .box {
+      background-color: #f9fbfd;
+      border: 1px solid #ccd6e0;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input {
+      padding: 8px;
+      width: 180px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+
+    .btn {
+      background-color: #1e3a5f;
+      color: white;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #345d91;
+    }
+
+    .btn-secondary {
+      background-color: #4a6b8c;
+      color: white;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .result-box {
+      background-color: #eef3f8;
+      border-left: 4px solid #1e3a5f;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .result-box p {
+      margin: 0;
+      font-weight: bold;
+      color: #1e3a5f;
+    }
+
+    footer {
+      background-color: #142842;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 13px;
+      position: sticky;
+      bottom: 0;
+    }
+
+    @media (max-width: 650px) {
+      .burger {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <h1>CS 1130 - Introduction to Computing</h1>
+      <button class="burger" id="burgerBtn">&#9776;</button>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="unit-converter.html">Unit Converter</a>
+      <a href="income-tax-calculator.html">Income Tax Calculator</a>
+      <a href="natural-numbers-loops.html">Factorial, Sum and Average</a>
+      <a href="employee-payroll.html">Simple Payroll</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="top-bar">
+      <h2>Factorial, Sum and Average</h2>
+      <a href="index.html" class="home-link">Return to Home</a>
+    </div>
+
+    <div class="box">
+      <label for="numInput">Enter an Integer Value (n):</label>
+      <div class="flex-row">
+        <input type="number" id="numInput">
+        <button class="btn" id="computeBtn">Compute</button>
+        <button class="btn-secondary" id="randomBtn">Random N</button>
+      </div>
+    </div>
+
+    <div class="result-box">
+      <p id="factorialOutput">Nth Factorial (While Loop): </p>
+    </div>
+
+    <div class="result-box">
+      <p id="sumOutput">Sum of First N Numbers (Do While Loop): </p>
+    </div>
+
+    <div class="result-box">
+      <p id="avgOutput">Average of First N Numbers (For Loop): </p>
+    </div>
+  </div>
+
+  <footer>
+    CS 1130 - Introduction to Computing
+  </footer>
+
+  <script>
+    function calculate() {
+      let n = parseInt(document.getElementById("numInput").value);
+
+      if (isNaN(n) || n < 0) {
+        alert("Please enter a non-negative integer.");
+        return;
+      }
+
+      let factorial = 1;
+      let i = 1;
+      while (i <= n) {
+        factorial = factorial * i;
+        i++;
+      }
+
+      let sum = 0;
+      if (n > 0) {
+        let j = 1;
+        do {
+          sum = sum + j;
+          j++;
+        } while (j <= n);
+      }
+
+      let total = 0;
+      for (let k = 1; k <= n; k++) {
+        total = total + k;
+      }
+
+      let average = 0;
+      if (n > 0) {
+        average = total / n;
+      }
+
+      document.getElementById("factorialOutput").innerHTML = "Nth Factorial (While Loop): " + factorial;
+      document.getElementById("sumOutput").innerHTML = "Sum of First N Numbers (Do While Loop): " + sum;
+      document.getElementById("avgOutput").innerHTML = "Average of First N Numbers (For Loop): " + average.toFixed(2);
+    }
+
+    function main() {
+      document.getElementById("burgerBtn").addEventListener("click", () => {
+        document.getElementById("navMenu").classList.toggle("show");
+      });
+
+      document.getElementById("computeBtn").addEventListener("click", () => {
+        calculate();
+      });
+
+      document.getElementById("randomBtn").addEventListener("click", () => {
+        let randomN = Math.floor(Math.random() * 12) + 1;
+        document.getElementById("numInput").value = randomN;
+        calculate();
+      });
+    }
+
+    main();
+  </script>
+
+</body>
+</html>
